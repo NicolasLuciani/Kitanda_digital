@@ -51,4 +51,4 @@
 <p></p>
 <p> - produtos, possui o id do produtos, sendo chave primaria, nome do produto, preço, categoria, id do vendedor que é um chave estrangeira</p>
 <p> - vendas, possui o id das vendas, chave primaria, o id do produto, que é uma chave estrangeira, a quantidade, data da venda.</p>
-<p> - vendedores, </p>
+<p> - vendedores, possui o id das vendas, possui a chave primária, id dos produtos, chave estrangeira, quantidade e a data da venda</p>
