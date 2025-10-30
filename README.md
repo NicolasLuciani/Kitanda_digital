@@ -23,8 +23,9 @@
 
   ## Query
   ### tabelas
-  ```sql
-  
+
+### Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
+```sql
     CREATE TABLE produtos (
   
       id_produto INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,7 +36,10 @@
       FOREIGN KEY (id_vendedor) REFERENCES vendedores(id_vendedor)
     );
 
+```
+<p> - produtos, possui o id do produtos, sendo chave primaria, nome do produto, preço, categoria, id do vendedor que é um chave estrangeira</p>
 
+```sql
     CREATE TABLE vendas (
   
         id_venda INT(5) PRIMARY KEY auto_increment,
@@ -44,13 +48,21 @@
         quantidade INT(6),
         data_venda DATE
     );
-  
-  ```
 
-### Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
-<p></p>
-<p> - produtos, possui o id do produtos, sendo chave primaria, nome do produto, preço, categoria, id do vendedor que é um chave estrangeira</p>
+```
 <p> - vendas, possui o id das vendas, chave primaria, o id do produto, que é uma chave estrangeira, a quantidade, data da venda.</p>
+
+```sql
+CREATE TABLE vendedores (
+    id_vendedor INT(3) PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(15),
+    email VARCHAR(30),
+    cidade VARCHAR(20),
+    estado VARCHAR(20),
+    data_cadastro DATE
+);
+
+```
 <p> - vendedores, possui o id das vendas, possui a chave primária, id dos produtos, chave estrangeira, quantidade e a data da venda</p>
 
 ---
