@@ -47,7 +47,7 @@
   
   ```
 
-<p> - Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
+### Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
 <p></p>
 <p> - produtos, possui o id do produtos, sendo chave primaria, nome do produto, preço, categoria, id do vendedor que é um chave estrangeira</p>
 <p> - vendas, possui o id das vendas, chave primaria, o id do produto, que é uma chave estrangeira, a quantidade, data da venda.</p>
