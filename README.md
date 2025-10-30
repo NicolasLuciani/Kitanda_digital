@@ -68,6 +68,19 @@ CREATE TABLE vendedores (
 ---
 ### Views
 ```sql
+
+
+
+
+
+
+
+
+
+
+
+```
+```sql
 CREATE VIEW vw_produtos_detalhados AS view1
 SELECT
     p.nome_produto AS NomeProduto,
@@ -81,7 +94,10 @@ FROM
 JOIN
     vendedores v ON p.id_vendedor = v.id_vendedor;
 
+```
+<p> - A view vw_produtos_detalhados exibe todos os produtos disponíveis no marketplace, mostrando o nome do produto, preço, categoria e as informações do vendedor responsável, incluindo nome, cidade e estado. Ela permite visualizar rapidamente os produtos com seus respectivos vendedores, facilitando consultas de catálogo ou listagens completas.</p>
 
+```sql
 CREATE VIEW vw_total_vendas_por_vendedor AS
 SELECT
     a.nome AS NOME,
@@ -95,7 +111,10 @@ JOIN
 GROUP BY
     a.nome;
 
+```
+<p> - A view vw_total_vendas_por_vendedor calcula o valor total vendido por cada vendedor, somando o preço dos produtos multiplicado pela quantidade vendida. É útil para identificar quais vendedores possuem maior faturamento, permitindo análises de desempenho e ranking de vendas.</p>
 
+```sql
 CREATE VIEW vw_vendas_mensais AS view3
 SELECT
     v.nome,
@@ -112,7 +131,10 @@ JOIN
 GROUP BY
     v.nome, ano, mes;
 
+```
+<p> - A view vw_vendas_mensais apresenta o faturamento mensal de cada vendedor, agrupando as vendas por ano e mês. Ela mostra o nome do vendedor, o período da venda e o total faturado, permitindo acompanhar tendências de vendas, comparar períodos e identificar crescimento ou queda de desempenho ao longo do tempo.</p>
 
+```sql
 CREATE VIEW vw_produtos_por_categoria AS view4
 SELECT categoria,
     COUNT(*) AS total_produtos,
@@ -124,11 +146,5 @@ GROUP
     BY categoria;
 
 ```
-<p> - A view vw_produtos_detalhados exibe todos os produtos disponíveis no marketplace, mostrando o nome do produto, preço, categoria e as informações do vendedor responsável, incluindo nome, cidade e estado. Ela permite visualizar rapidamente os produtos com seus respectivos vendedores, facilitando consultas de catálogo ou listagens completas.</p>
-
-<p> - A view vw_total_vendas_por_vendedor calcula o valor total vendido por cada vendedor, somando o preço dos produtos multiplicado pela quantidade vendida. É útil para identificar quais vendedores possuem maior faturamento, permitindo análises de desempenho e ranking de vendas.</p>
-
-<p> - A view vw_vendas_mensais apresenta o faturamento mensal de cada vendedor, agrupando as vendas por ano e mês. Ela mostra o nome do vendedor, o período da venda e o total faturado, permitindo acompanhar tendências de vendas, comparar períodos e identificar crescimento ou queda de desempenho ao longo do tempo.</p>
-
 <p> - A view vw_produtos_por_categoria consolida informações sobre os produtos agrupados por categoria, mostrando o total de produtos cadastrados e o preço médio de cada categoria. Ela permite analisar a distribuição de produtos e preços, ajudando no planejamento de estoque e definição de estratégias comerciais.</p>
 
