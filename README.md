@@ -531,4 +531,4 @@ INSERT INTO vendas (id_produto, quantidade, data_venda) VALUES
 
 ---
 # Diagrama:
-!(bnicvjn)[dragrama__bd/diagrama__bd.jpeg]
+!(olá)[diagrama__bd.jpeg]
