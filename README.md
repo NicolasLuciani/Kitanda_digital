@@ -68,19 +68,6 @@ CREATE TABLE vendedores (
 ---
 ### Views
 ```sql
-
-
-
-
-
-
-
-
-
-
-
-```
-```sql
 CREATE VIEW vw_produtos_detalhados AS view1
 SELECT
     p.nome_produto AS NomeProduto,
@@ -98,7 +85,7 @@ JOIN
 <p> - A view vw_produtos_detalhados exibe todos os produtos disponíveis no marketplace, mostrando o nome do produto, preço, categoria e as informações do vendedor responsável, incluindo nome, cidade e estado. Ela permite visualizar rapidamente os produtos com seus respectivos vendedores, facilitando consultas de catálogo ou listagens completas.</p>
 
 ```sql
-CREATE VIEW vw_total_vendas_por_vendedor AS
+CREATE VIEW vw_total_vendas_por_vendedor AS view4
 SELECT
     a.nome AS NOME,
     SUM(b.quantidade * c.preco) AS QTD_VENDAS
