@@ -21,8 +21,8 @@
   - estado
   - data_cadastro
 
-  ## Query
-  ### tabelas
+---
+  ## tabelas
 
 ### Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
 ```sql
@@ -206,6 +206,22 @@ DELIMITER ;
 ---
 ### Query
 ```sql
+SELECT
+    v.nome AS NomeVendedor,
+    SUM(vd.quantidade * p.preco) AS TotalVendas
+FROM
+    vendas vd
+JOIN
+    produtos p
+    ON vd.id_produto = p.id_produto
+JOIN
+    vendedores v
+    ON p.id_vendedor = v.id_vendedor
+GROUP BY
+    v.id_vendedor, v.nome
+ORDER BY
+    TotalVendas DESC
+LIMIT 1;
 ```
 
 
@@ -229,34 +245,36 @@ LIMIT 1;
 ```
 
 ```sql
-
+SELECT
+    v.nome AS NomeVendedor,
+    p.categoria AS Categoria,
+    SUM(vd.quantidade * p.preco) AS TotalVendas,
+    ROUND(
+        (SUM(vd.quantidade * p.preco) / 
+        (SELECT
+              SUM(v2.quantidade * p2.preco)
+         FROM
+              vendas v2
+         JOIN
+              produtos p2
+              ON v2.id_produto = p2.id_produto
+         WHERE
+              p2.categoria = p.categoria)* 100)) AS PercentualParticipacao
+FROM
+    vendas vd
+JOIN
+    produtos p
+    ON vd.id_produto = p.id_produto
+JOIN
+    vendedores v
+    ON p.id_vendedor = v.id_vendedor
+GROUP BY
+    v.nome, p.categoria
+ORDER BY
+    p.categoria, TotalVendas DESC;
 ```
 
 
 ```sql
-SELECT
-    v.nome AS nome_vendedor,
-    YEAR(va.data_venda) AS ano,
-    MONTH(va.data_venda) AS mes,
-    SUM(va.quantidade * p.preco) AS total_vendas_mes,
-    ROUND(
-        (
-            (SUM(va.quantidade * p.preco) - LAG(SUM(va.quantidade * p.preco)) OVER (
-                PARTITION BY v.id_vendedor
-                ORDER BY YEAR(va.data_venda), MONTH(va.data_venda)
-            ))
-            / LAG(SUM(va.quantidade * p.preco)) OVER (
-                PARTITION BY v.id_vendedor
-                ORDER BY YEAR(va.data_venda), MONTH(va.data_venda)
-            )
-        ) * 100
-    , 2) AS variacao_percentual
-FROM
-    vendas va
-    INNER JOIN produtos p ON va.id_produto = p.id_produto
-    INNER JOIN vendedores v ON p.id_vendedor = v.id_vendedor
-GROUP BY
-    v.id_vendedor, v.nome, YEAR(va.data_venda), MONTH(va.data_venda)
-ORDER BY
-    v.nome, ano, mes;
+
 ```
