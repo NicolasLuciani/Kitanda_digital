@@ -223,7 +223,7 @@ ORDER BY
     TotalVendas DESC
 LIMIT 1;
 ```
-* <br><br><br><br>
+* Essa query faz um rank com os itens mais vendidos, utilizando o nome do produto e a quantidade vendida.<br><br><br><br>
 
 ```sql
 QUERY 2 
@@ -243,7 +243,7 @@ ORDER BY
     total_vendas DESC
 LIMIT 1;
 ```
-* <br><br><br><br>
+* Essa query verifica o vendedor que mais vendeu no total, utilizando o nome do vendedor e o total de vendas.<br><br><br><br>
 
 ```sql
 SELECT
@@ -274,7 +274,7 @@ GROUP BY
 ORDER BY
     p.categoria, TotalVendas DESC;
 ```
-* <br><br><br><br>
+* Essa query mostra o total de vendas por categoria e vendedor, utilizando o nome do vendedor, categoria do produto, total de vendas e percentual de participação do vendedor dentro da categoria<br><br><br><br>
 
 
 
@@ -283,4 +283,4 @@ ORDER BY
 ```
 
 
-![Diagrama do Banco de Dados](EsteComputador/imagens/diagrama_bd.png)
+
