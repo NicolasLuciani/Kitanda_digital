@@ -120,7 +120,7 @@ GROUP BY
 
 ```
 
-<legend><li>Apresenta o faturamento mensal de cada vendedor, agrupando as vendas por ano e mês. Ela mostra o nome do vendedor, o período da venda e o total faturado, permitindo acompanhar tendências de vendas, comparar períodos e identificar crescimento ou queda de desempenho ao longo do tempo.<li/><br><br></legend>
+<li>Apresenta o faturamento mensal de cada vendedor, agrupando as vendas por ano e mês. Ela mostra o nome do vendedor, o período da venda e o total faturado, permitindo acompanhar tendências de vendas, comparar períodos e identificar crescimento ou queda de desempenho ao longo do tempo.<li/><br><br>
 
 ```sql
 CREATE VIEW vw_produtos_por_categoria AS view4
@@ -274,6 +274,9 @@ ORDER BY
     p.categoria, TotalVendas DESC;
 ```
 
+
+[x] LOA
+[x] EFE
 
 ```sql
 
