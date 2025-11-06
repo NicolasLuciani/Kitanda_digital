@@ -529,3 +529,5 @@ INSERT INTO vendas (id_produto, quantidade, data_venda) VALUES
 ```
 <br><br><br>
 
+---
+# Diagrama:
