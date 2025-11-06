@@ -275,10 +275,10 @@ ORDER BY
 ```
 
 
-[x] LOA
-[x] EFE
 
 ```sql
 
 ```
-**soekdheui>**
+
+- [] OSWKIJI
+- [x] OSWKIJI
