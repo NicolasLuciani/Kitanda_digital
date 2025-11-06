@@ -1,5 +1,5 @@
-# KITANDA DIGITAL
-## Estrutura
+# 🍍 KITANDA DIGITAL
+## 🦴 Estrutura
 - produtos
   - id_produto
   - nome_produto
@@ -22,7 +22,7 @@
   - data_cadastro
 
 ---
-  ## tabelas
+  ## 📁 tabelas
 
 ### Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
 ```sql
@@ -66,7 +66,7 @@ CREATE TABLE vendedores (
 * vendedores, possui o id das vendas, possui a chave primária, id dos produtos, chave estrangeira, quantidade e a data da venda.<br><br><br><br>
 
 ---
-### Views
+### 👀 Views
 ```sql
 CREATE VIEW vw_produtos_detalhados AS view1
 SELECT
@@ -137,7 +137,7 @@ GROUP
 * Consolida informações sobre os produtos agrupados por categoria, mostrando o total de produtos cadastrados e o preço médio de cada categoria. Ela permite analisar a distribuição de produtos e preços, ajudando no planejamento de estoque e definição de estratégias comerciais.<br><br><br><br>
 
 ---
-### Procedure
+### 💻 Procedure
 ```sql
 DELIMITER $$
 CREATE PROCEDURE sp_cadastrar_vendedor(
@@ -204,7 +204,7 @@ DELIMITER ;
 * Nesta procedure ele atualiza o perço, com a variavel 'preço'.<br><br><br><br>
 
 ---
-### Query
+### 🖱️ Query
 ```sql
 SELECT
     v.nome AS NomeVendedor,
