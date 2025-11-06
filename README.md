@@ -37,7 +37,7 @@
     );
 
 ```
-<p> - produtos, possui o id do produtos, sendo chave primaria, nome do produto, preço, categoria, id do vendedor que é um chave estrangeira</p>
+<ul><li>Produtos, possui o id do produtos, sendo chave primaria, nome do produto, preço, categoria, id do vendedor que é um chave estrangeira</li></ul>
 
 ```sql
     CREATE TABLE vendas (
@@ -50,7 +50,7 @@
     );
 
 ```
-<p> - vendas, possui o id das vendas, chave primaria, o id do produto, que é uma chave estrangeira, a quantidade, data da venda.</p>
+<ul><li>Vendas, possui o id das vendas, chave primaria, o id do produto, que é uma chave estrangeira, a quantidade, data da venda.<li/></ul>
 
 ```sql
 CREATE TABLE vendedores (
@@ -63,7 +63,7 @@ CREATE TABLE vendedores (
 );
 
 ```
-<p> - vendedores, possui o id das vendas, possui a chave primária, id dos produtos, chave estrangeira, quantidade e a data da venda</p>
+<ul><li>vendedores, possui o id das vendas, possui a chave primária, id dos produtos, chave estrangeira, quantidade e a data da venda</li></ul>
 
 ---
 ### Views
@@ -82,7 +82,7 @@ JOIN
     vendedores v ON p.id_vendedor = v.id_vendedor;
 
 ```
-<p> - A view vw_produtos_detalhados exibe todos os produtos disponíveis no marketplace, mostrando o nome do produto, preço, categoria e as informações do vendedor responsável, incluindo nome, cidade e estado. Ela permite visualizar rapidamente os produtos com seus respectivos vendedores, facilitando consultas de catálogo ou listagens completas.</p>
+<ul><li>Exibe todos os produtos disponíveis, mostrando o nome do produto, preço, categoria e as informações do vendedor responsável, incluindo nome, cidade e estado. Ela permite visualizar rapidamente os produtos com seus respectivos vendedores, facilitando consultas de catálogo ou listagens completas.</li></ul>
 
 ```sql
 CREATE VIEW vw_total_vendas_por_vendedor AS view4
@@ -99,7 +99,7 @@ GROUP BY
     a.nome;
 
 ```
-<p> - A view vw_total_vendas_por_vendedor calcula o valor total vendido por cada vendedor, somando o preço dos produtos multiplicado pela quantidade vendida. É útil para identificar quais vendedores possuem maior faturamento, permitindo análises de desempenho e ranking de vendas.</p>
+<ul><li>Calcula o valor total vendido por cada vendedor, somando o preço dos produtos multiplicado pela quantidade vendida.<li/></ul>
 
 ```sql
 CREATE VIEW vw_vendas_mensais AS view3
@@ -119,7 +119,8 @@ GROUP BY
     v.nome, ano, mes;
 
 ```
-<p> - A view vw_vendas_mensais apresenta o faturamento mensal de cada vendedor, agrupando as vendas por ano e mês. Ela mostra o nome do vendedor, o período da venda e o total faturado, permitindo acompanhar tendências de vendas, comparar períodos e identificar crescimento ou queda de desempenho ao longo do tempo.</p>
+
+<ul><li>Apresenta o faturamento mensal de cada vendedor, agrupando as vendas por ano e mês. Ela mostra o nome do vendedor, o período da venda e o total faturado, permitindo acompanhar tendências de vendas, comparar períodos e identificar crescimento ou queda de desempenho ao longo do tempo.<li/></ul>
 
 ```sql
 CREATE VIEW vw_produtos_por_categoria AS view4
@@ -133,5 +134,129 @@ GROUP
     BY categoria;
 
 ```
-<p> - A view vw_produtos_por_categoria consolida informações sobre os produtos agrupados por categoria, mostrando o total de produtos cadastrados e o preço médio de cada categoria. Ela permite analisar a distribuição de produtos e preços, ajudando no planejamento de estoque e definição de estratégias comerciais.</p>
+<ul><li></li>Consolida informações sobre os produtos agrupados por categoria, mostrando o total de produtos cadastrados e o preço médio de cada categoria. Ela permite analisar a distribuição de produtos e preços, ajudando no planejamento de estoque e definição de estratégias comerciais.</li></ul>
 
+---
+### Procedure
+```sql
+DELIMITER $$
+CREATE PROCEDURE sp_cadastrar_vendedor(
+IN p_nome VARCHAR(15),
+            IN p_email VARCHAR(30),
+            IN p_cidade VARCHAR(20),
+            IN p_estado VARCHAR(20))
+BEGIN
+INSERT INTO vendedores(nome, email, cidade, estado)
+        VALUES
+(p_nome, p_email, p_cidade, p_estado, CURDATE());
+           
+END $$
+DELIMITER ;
+```
+
+<li><ul>Nesta procedure ele cadastra o vendedor, com o email, cidade e estado.</ul></li>
+
+```sql
+DELIMITER $$
+
+CREATE PROCEDURE sp_registrar_venda(
+    IN p_id_produto INT,
+    IN p_quantidade INT
+)
+BEGIN
+    DECLARE v_exist INT;
+
+    SELECT COUNT(*) INTO v_exist
+    FROM produtos
+    WHERE id_produto = p_id_produto;
+
+    IF v_exist = 0 THEN
+        SELECT 'Erro: Produto não encontrado.' AS mensagem;
+    ELSEIF p_quantidade < 0 THEN
+        SELECT 'Erro: Quantidade inválida. Deve ser maior que zero.' AS mensagem;
+    ELSE
+        INSERT INTO vendas (id_produto, quantidade, data_venda)
+        VALUES (p_id_produto, p_quantidade, NOW());
+        SELECT 'Venda registrada com sucesso!' AS mensagem;
+    END IF;
+END $$
+
+DELIMITER ;
+```
+
+<li><ul>Aqui ele registra uma venda, a partir do seu id e da quantidade, verificando se o produto foi encontra, se sim ele verifica a quantidade, se não da erro.</ul></li>
+
+```sql
+DELIMITER $$
+
+CREATE PROCEDURE sp_atualizar_preco_categoria(
+    IN p_categoria VARCHAR(100),
+    IN p_percentual DECIMAL(5,2)
+)
+BEGIN
+    UPDATE produtos
+    SET preco = preco + (preco * (p_percentual / 100))
+    WHERE categoria = p_categoria;
+END $$
+
+DELIMITER ;
+```
+<li><ul>Nesta procedure ele atualiza o perço, com a variavel 'preço'.</ul></li>
+
+---
+### Query
+```sql
+```
+
+
+```sql
+QUERY 2 
+SELECT
+    v.nome AS nome_vendedor,
+    SUM(p.preco * ve.quantidade) AS total_vendas
+FROM
+    vendedores v
+JOIN
+    produtos p
+    ON v.id_vendedor = p.id_vendedor
+JOIN
+    vendas ve ON p.id_produto = ve.id_produto
+GROUP BY
+    v.id_vendedor, v.nome
+ORDER BY
+    total_vendas DESC
+LIMIT 1;
+```
+
+```sql
+
+```
+
+
+```sql
+SELECT
+    v.nome AS nome_vendedor,
+    YEAR(va.data_venda) AS ano,
+    MONTH(va.data_venda) AS mes,
+    SUM(va.quantidade * p.preco) AS total_vendas_mes,
+    ROUND(
+        (
+            (SUM(va.quantidade * p.preco) - LAG(SUM(va.quantidade * p.preco)) OVER (
+                PARTITION BY v.id_vendedor
+                ORDER BY YEAR(va.data_venda), MONTH(va.data_venda)
+            ))
+            / LAG(SUM(va.quantidade * p.preco)) OVER (
+                PARTITION BY v.id_vendedor
+                ORDER BY YEAR(va.data_venda), MONTH(va.data_venda)
+            )
+        ) * 100
+    , 2) AS variacao_percentual
+FROM
+    vendas va
+    INNER JOIN produtos p ON va.id_produto = p.id_produto
+    INNER JOIN vendedores v ON p.id_vendedor = v.id_vendedor
+GROUP BY
+    v.id_vendedor, v.nome, YEAR(va.data_venda), MONTH(va.data_venda)
+ORDER BY
+    v.nome, ano, mes;
+```
