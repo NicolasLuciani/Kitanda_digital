@@ -283,4 +283,4 @@ ORDER BY
 ```
 
 
-![ola](./Downloads/diagrama_bd.png)
+![Diagrama do Banco de Dados](./imagens/diagrama_bd.png)
