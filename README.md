@@ -223,7 +223,7 @@ ORDER BY
     TotalVendas DESC
 LIMIT 1;
 ```
-
+* <br><br><br><br>
 
 ```sql
 QUERY 2 
@@ -243,6 +243,7 @@ ORDER BY
     total_vendas DESC
 LIMIT 1;
 ```
+* <br><br><br><br>
 
 ```sql
 SELECT
@@ -273,6 +274,7 @@ GROUP BY
 ORDER BY
     p.categoria, TotalVendas DESC;
 ```
+* <br><br><br><br>
 
 
 
@@ -280,3 +282,5 @@ ORDER BY
 
 ```
 
+
+![ola](Downloads/diagrama_bd)
