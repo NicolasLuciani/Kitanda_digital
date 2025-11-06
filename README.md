@@ -276,11 +276,40 @@ ORDER BY
 ```
 * Essa query mostra o total de vendas por categoria e vendedor, utilizando o nome do vendedor, categoria do produto, total de vendas e percentual de participação do vendedor dentro da categoria<br><br><br><br>
 
-
-
 ```sql
-
+SELECT 
+    v.nome AS vendedor,
+    YEAR(v1.data_venda) AS ano,
+    MONTH(v1.data_venda) AS mes,
+    SUM(v1.quantidade * p.preco) AS total_mes,
+ROUND((
+        (SUM(v1.quantidade * p.preco) - SUM(v2.quantidade * p2.preco)) /
+        SUM(v2.quantidade * p2.preco)
+    )) AS variacao_percentual
+FROM
+    vendas v1
+JOIN
+    produtos p
+    ON v1.id_produto = p.id_produto
+JOIN
+    vendedores v
+    ON p.id_vendedor = v.id_vendedor
+LEFT JOIN
+    vendas v2
+    ON MONTH(v2.data_venda) = MONTH(v1.data_venda) - 1
+        AND YEAR(v2.data_venda) = YEAR(v1.data_venda)
+        AND v2.id_produto = v1.id_produto
+JOIN
+    produtos p2
+    ON v2.id_produto = p2.id_produto
+GROUP BY
+    v.nome, ano, mes
+ORDER BY
+    v.nome, ano, mes;
 ```
+
+* Essa query apresentar a variação percentual de vendas mês a mês para cada vendedor, utilizando, o nome do vendedor, o mês, ano, o total de vendas, verificando a variação percentual entre o mês anterior.
+
 
 
 
