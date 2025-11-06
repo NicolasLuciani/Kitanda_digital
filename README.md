@@ -531,4 +531,4 @@ INSERT INTO vendas (id_produto, quantidade, data_venda) VALUES
 
 ---
 # Diagrama:
-!(olá)[[diagrama__bd.jpeg](https://github.com/NicolasLuciani/Kitanda_digital/blob/8dae2ad2f3dec5da571299651700f6f4a241b967/diagrama__bd.jpeg)]
+![diagrama__bd.jpeg](https://github.com/NicolasLuciani/Kitanda_digital/blob/8dae2ad2f3dec5da571299651700f6f4a241b967/diagrama__bd.jpeg)
