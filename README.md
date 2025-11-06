@@ -283,4 +283,4 @@ ORDER BY
 ```
 
 
-![ola](Downloads/diagrama_bd)
+![ola](./Downloads/diagrama_bd)
