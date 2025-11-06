@@ -37,7 +37,7 @@
     );
 
 ```
-<li>Produtos, possui o id do produtos, sendo chave primaria, nome do produto, preço, categoria, id do vendedor que é um chave estrangeira</li><br><br>
+* Produtos, possui o id do produtos, sendo chave primaria, nome do produto, preço, categoria, id do vendedor que é um chave estrangeira.
 
 ```sql
     CREATE TABLE vendas (
@@ -50,7 +50,7 @@
     );
 
 ```
-<li>Vendas, possui o id das vendas, chave primaria, o id do produto, que é uma chave estrangeira, a quantidade, data da venda.<li/><br><br>
+* Vendas, possui o id das vendas, chave primaria, o id do produto, que é uma chave estrangeira, a quantidade, data da venda.
 
 ```sql
 CREATE TABLE vendedores (
@@ -63,7 +63,7 @@ CREATE TABLE vendedores (
 );
 
 ```
-<li>vendedores, possui o id das vendas, possui a chave primária, id dos produtos, chave estrangeira, quantidade e a data da venda</li><br><br>
+* vendedores, possui o id das vendas, possui a chave primária, id dos produtos, chave estrangeira, quantidade e a data da venda.
 
 ---
 ### Views
@@ -82,7 +82,7 @@ JOIN
     vendedores v ON p.id_vendedor = v.id_vendedor;
 
 ```
-<li>Exibe todos os produtos disponíveis, mostrando o nome do produto, preço, categoria e as informações do vendedor responsável, incluindo nome, cidade e estado. Ela permite visualizar rapidamente os produtos com seus respectivos vendedores, facilitando consultas de catálogo ou listagens completas.</li><br><br>
+* Exibe todos os produtos disponíveis, mostrando o nome do produto, preço, categoria e as informações do vendedor responsável, incluindo nome, cidade e estado. Ela permite visualizar rapidamente os produtos com seus respectivos vendedores, facilitando consultas de catálogo ou listagens completas.
 
 ```sql
 CREATE VIEW vw_total_vendas_por_vendedor AS view4
@@ -99,7 +99,7 @@ GROUP BY
     a.nome;
 
 ```
-<li>Calcula o valor total vendido por cada vendedor, somando o preço dos produtos multiplicado pela quantidade vendida.<li/><br><br>
+* Calcula o valor total vendido por cada vendedor, somando o preço dos produtos multiplicado pela quantidade vendida.
 
 ```sql
 CREATE VIEW vw_vendas_mensais AS view3
@@ -120,7 +120,7 @@ GROUP BY
 
 ```
 
-<li>Apresenta o faturamento mensal de cada vendedor, agrupando as vendas por ano e mês. Ela mostra o nome do vendedor, o período da venda e o total faturado, permitindo acompanhar tendências de vendas, comparar períodos e identificar crescimento ou queda de desempenho ao longo do tempo.<li/><br><br>
+* Apresenta o faturamento mensal de cada vendedor, agrupando as vendas por ano e mês. Ela mostra o nome do vendedor, o período da venda e o total faturado, permitindo acompanhar tendências de vendas, comparar períodos e identificar crescimento ou queda de desempenho ao longo do tempo.
 
 ```sql
 CREATE VIEW vw_produtos_por_categoria AS view4
@@ -134,7 +134,7 @@ GROUP
     BY categoria;
 
 ```
-<li></li>Consolida informações sobre os produtos agrupados por categoria, mostrando o total de produtos cadastrados e o preço médio de cada categoria. Ela permite analisar a distribuição de produtos e preços, ajudando no planejamento de estoque e definição de estratégias comerciais.</li><br><br>
+* Consolida informações sobre os produtos agrupados por categoria, mostrando o total de produtos cadastrados e o preço médio de cada categoria. Ela permite analisar a distribuição de produtos e preços, ajudando no planejamento de estoque e definição de estratégias comerciais.
 
 ---
 ### Procedure
@@ -154,7 +154,7 @@ END $$
 DELIMITER ;
 ```
 
-<li>Nesta procedure ele cadastra o vendedor, com o email, cidade e estado.</li><br><br>
+* Nesta procedure ele cadastra o vendedor, com o email, cidade e estado.
 
 ```sql
 DELIMITER $$
@@ -184,7 +184,7 @@ END $$
 DELIMITER ;
 ```
 
-<li>Aqui ele registra uma venda, a partir do seu id e da quantidade, verificando se o produto foi encontra, se sim ele verifica a quantidade, se não da erro.</li><br><br>
+* Aqui ele registra uma venda, a partir do seu id e da quantidade, verificando se o produto foi encontra, se sim ele verifica a quantidade, se não da erro.
 
 ```sql
 DELIMITER $$
@@ -201,7 +201,7 @@ END $$
 
 DELIMITER ;
 ```
-<li>Nesta procedure ele atualiza o perço, com a variavel 'preço'.</li><br><br>
+* Nesta procedure ele atualiza o perço, com a variavel 'preço'.
 
 ---
 ### Query
@@ -280,4 +280,3 @@ ORDER BY
 
 ```
 
-* wuendwidmw
