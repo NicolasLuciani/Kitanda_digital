@@ -532,3 +532,16 @@ INSERT INTO vendas (id_produto, quantidade, data_venda) VALUES
 ---
 # Diagrama:
 ![diagrama__bd.jpeg](https://github.com/NicolasLuciani/Kitanda_digital/blob/8dae2ad2f3dec5da571299651700f6f4a241b967/diagrama__bd.jpeg)
+
+
+
+
+
+
+# NOMES:
+Nicolas Luciani N°25
+John Wayne N°12
+Miguel Rosa N°21
+Samuel Gracias N°30
+Gustavo Zampiron N°09
+Guilherme Wallace N°08
