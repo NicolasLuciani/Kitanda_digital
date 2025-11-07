@@ -24,7 +24,7 @@
 ---
   ## 📁 tabelas
 
-### Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
+<p>Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
 ```sql
     CREATE TABLE produtos (
   
@@ -539,9 +539,9 @@ INSERT INTO vendas (id_produto, quantidade, data_venda) VALUES
 
 
 # NOMES:
-Nicolas Luciani N°25
-John Wayne N°12
-Miguel Rosa N°21
-Samuel Gracias N°30
-Gustavo Zampiron N°09
-Guilherme Wallace N°08
+Nicolas Luciani N°25<br>
+John Wayne N°12<br>
+Miguel Rosa N°21<br>
+Samuel Gracias N°30<br>
+Gustavo Zampiron N°09<br>
+Guilherme Wallace N°08<br>
