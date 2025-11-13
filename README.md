@@ -131,8 +131,8 @@ SELECT categoria,
    
 FROM
     produtos
-GROUP
-    BY categoria;
+GROUP BY
+	categoria;
 
 ```
 * Consolida informações sobre os produtos agrupados por categoria, mostrando o total de produtos cadastrados e o preço médio de cada categoria. Ela permite analisar a distribuição de produtos e preços, ajudando no planejamento de estoque e definição de estratégias comerciais.<br><br><br><br>
