@@ -165,10 +165,12 @@ CREATE PROCEDURE sp_registrar_venda(
     IN p_quantidade INT
 )
 BEGIN
-    DECLARE v_exist INT;
+    DECLARE v_existe INT; -- declara a existencia do produto
 
-    SELECT COUNT(*) INTO v_exist
-    FROM produtos
+    SELECT 
+		COUNT(*) INTO v_existe
+    FROM 
+		produtos
     WHERE id_produto = p_id_produto;
 
     IF v_exist = 0 THEN
@@ -177,8 +179,10 @@ BEGIN
         SELECT 'Erro: Quantidade inválida. Deve ser maior que zero.' AS mensagem;
     ELSE
         INSERT INTO vendas (id_produto, quantidade, data_venda)
-        VALUES (p_id_produto, p_quantidade, NOW());
-        SELECT 'Venda registrada com sucesso!' AS mensagem;
+        VALUES 
+			(p_id_produto, p_quantidade, NOW());
+        SELECT 
+			'Venda registrada com sucesso!' AS mensagem;
     END IF;
 END $$
 
