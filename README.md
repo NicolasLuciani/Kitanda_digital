@@ -78,7 +78,7 @@ SELECT
     v.estado AS Estado,
     p.categoria AS Categoria
 FROM
-    produtos p
+    produtos AS p
 JOIN
     vendedores v ON p.id_vendedor = v.id_vendedor;
 
