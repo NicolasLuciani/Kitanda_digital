@@ -26,8 +26,8 @@
 
 <p>Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
 ```sql
+
     CREATE TABLE produtos (
-  
       id_produto INT AUTO_INCREMENT PRIMARY KEY,
       nome_produto VARCHAR(100) NOT NULL,
       preco DECIMAL(10,2) NOT NULL,
@@ -109,14 +109,14 @@ SELECT
     MONTH(ve.data_venda) AS mes,
     SUM(ve.quantidade * p.preco) AS total_vendas
 FROM
-    vendas ve
+    vendas AS v
 JOIN
-    produtos p ON ve.id_produto = p.id_produto
+    produtos AS p ON v.id_produto = p.id_produto
 JOIN
-    vendedores v ON p.id_vendedor = v.id_vendedor
+    vendedores AS ve ON p.id_vendedor = ve.id_vendedor
 
 GROUP BY
-    v.nome, ano, mes;
+    ve.nome, ano, mes;
 
 ```
 
@@ -140,17 +140,17 @@ GROUP
 ### 💻 Procedure
 ```sql
 DELIMITER $$
-CREATE PROCEDURE sp_cadastrar_vendedor(
-IN p_nome VARCHAR(15),
-            IN p_email VARCHAR(30),
-            IN p_cidade VARCHAR(20),
-            IN p_estado VARCHAR(20))
-BEGIN
-INSERT INTO vendedores(nome, email, cidade, estado)
-        VALUES
-(p_nome, p_email, p_cidade, p_estado, CURDATE());
-           
-END $$
+    CREATE PROCEDURE sp_cadastrar_vendedor(
+    IN p_nome VARCHAR(15),
+                IN p_email VARCHAR(30),
+                IN p_cidade VARCHAR(20),
+                IN p_estado VARCHAR(20))
+  BEGIN
+      INSERT INTO vendedores(nome, email, cidade, estado)
+              VALUES
+      (p_nome, p_email, p_cidade, p_estado, CURDATE());
+             
+  END $$
 DELIMITER ;
 ```
 
@@ -207,7 +207,7 @@ DELIMITER ;
 ### 🖱️ Query
 ```sql
 SELECT
-    v.nome AS NomeVendedor,
+    v.nome AS NomeVendedor,fffffffffffffffffffffffffffffffffffffffff
     SUM(vd.quantidade * p.preco) AS TotalVendas
 FROM
     vendas vd
