@@ -207,15 +207,15 @@ DELIMITER ;
 ### 🖱️ Query
 ```sql
 SELECT
-    v.nome AS NomeVendedor,fffffffffffffffffffffffffffffffffffffffff
+    v.nome AS NomeVendedor,
     SUM(vd.quantidade * p.preco) AS TotalVendas
 FROM
-    vendas vd
+    vendas AS vd
 JOIN
-    produtos p
+    produtos AS p
     ON vd.id_produto = p.id_produto
 JOIN
-    vendedores v
+    vendedores AS v
     ON p.id_vendedor = v.id_vendedor
 GROUP BY
     v.id_vendedor, v.nome
@@ -231,9 +231,9 @@ SELECT
     v.nome AS nome_vendedor,
     SUM(p.preco * ve.quantidade) AS total_vendas
 FROM
-    vendedores v
+    vendedores AS v
 JOIN
-    produtos p
+    produtos AS p
     ON v.id_vendedor = p.id_vendedor
 JOIN
     vendas ve ON p.id_produto = ve.id_produto
@@ -255,19 +255,19 @@ SELECT
         (SELECT
               SUM(v2.quantidade * p2.preco)
          FROM
-              vendas v2
+              vendas AS v2
          JOIN
-              produtos p2
+              produtos AS p2
               ON v2.id_produto = p2.id_produto
          WHERE
               p2.categoria = p.categoria)* 100)) AS PercentualParticipacao
 FROM
-    vendas vd
+    vendas AS vd
 JOIN
-    produtos p
+    produtos AS p
     ON vd.id_produto = p.id_produto
 JOIN
-    vendedores v
+    vendedores AS v
     ON p.id_vendedor = v.id_vendedor
 GROUP BY
     v.nome, p.categoria
@@ -287,20 +287,20 @@ ROUND((
         SUM(v2.quantidade * p2.preco)
     )) AS variacao_percentual
 FROM
-    vendas v1
+    vendas AS v1
 JOIN
-    produtos p
+    produtos AS p
     ON v1.id_produto = p.id_produto
 JOIN
-    vendedores v
+    vendedores AS v
     ON p.id_vendedor = v.id_vendedor
 LEFT JOIN
-    vendas v2
+    vendas AS v2
     ON MONTH(v2.data_venda) = MONTH(v1.data_venda) - 1
         AND YEAR(v2.data_venda) = YEAR(v1.data_venda)
         AND v2.id_produto = v1.id_produto
 JOIN
-    produtos p2
+    produtos AS p2
     ON v2.id_produto = p2.id_produto
 GROUP BY
     v.nome, ano, mes
