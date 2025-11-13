@@ -24,7 +24,7 @@
 ---
   ## 📁 tabelas
 
-<p>Crimos três tabelas necessáris, produtos, vendas e vendedores</p>
+<p>Criamos três tabelas necessáris, produtos, vendas e vendedores</p>
 
 ```sql
 
