@@ -141,17 +141,17 @@ GROUP
 ### 💻 Procedure
 ```sql
 DELIMITER $$
-    CREATE PROCEDURE sp_cadastrar_vendedor(
-    IN p_nome VARCHAR(15),
-                IN p_email VARCHAR(30),
-                IN p_cidade VARCHAR(20),
-                IN p_estado VARCHAR(20))
-  BEGIN
-      INSERT INTO vendedores(nome, email, cidade, estado)
-              VALUES
-      (p_nome, p_email, p_cidade, p_estado, CURDATE());
-             
-  END $$
+	CREATE PROCEDURE sp_cadastrar_vendedor(
+	IN p_nome VARCHAR(15),
+	            IN p_email VARCHAR(30),
+	            IN p_cidade VARCHAR(20),
+	            IN p_estado VARCHAR(20))
+	BEGIN
+	INSERT INTO vendedores(nome, email, cidade, estado)
+	        VALUES
+	(p_nome, p_email, p_cidade, p_estado, CURDATE()); -- o CURDATE vem de Current Date, que representa a data que é feito o cadastro
+	           
+	END $$
 DELIMITER ;
 ```
 
